@@ -22,14 +22,20 @@ def simple_circuits_20(angle):
     # QHACK #
 
     # Step 1 : initalize a device
+    dev = qml.device('default.qubit', 1)
 
     # Step 2 : Create a quantum circuit and qnode
+    @qml.qnode(dev)
+    def my_quantum_function(theta):
+        qml.RX(theta, wires = 0)
+
+        return qml.probs(wires = 0)
 
     # Step 3 : Run the qnode
-    # prob = ?
+    prob = my_quantum_function(angle)
 
     # QHACK #
-    return prob
+    return prob[0]
 
 
 if __name__ == "__main__":
