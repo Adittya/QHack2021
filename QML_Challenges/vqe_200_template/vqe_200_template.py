@@ -21,6 +21,8 @@ def variational_ansatz(params, wires):
     """
 
     # QHACK #
+    qml.QubitStateVector(params, wires=range(wires))
+
 
     # QHACK #
 
@@ -42,8 +44,10 @@ def run_vqe(H):
     # QHACK #
 
     # Initialize the quantum device
+    dev = qml.device('default.qubit', wires = len(H.wires))
 
     # Randomly choose initial parameters (how many do you need?)
+
 
     # Set up a cost function
 
